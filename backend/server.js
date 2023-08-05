@@ -3,13 +3,18 @@ const colors = require("colors");
 const express = require("express");
 const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 //connecting to database
 
 connectDB();
 
 const app = express();
+
+//work around the cors error in the console while creating and submitting user to the database
+var cors = require("cors");
+app.use(cors());
+
 //JSON body parsers to get the data from the body
 // be able to send json format
 app.use(express.json());
@@ -22,6 +27,8 @@ app.get("/api/users", (req, res) => {
 
 // Routes
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/tickets", require("./routes/ticketRoutes"));
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`server started on PORT ${PORT}`));
