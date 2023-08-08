@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getTicket, reset, closeTicket } from "../features/ticket/ticketSlice";
+import { getTicket, closeTicket } from "../features/ticket/ticketSlice";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useParams, useNavigate } from "react-router-dom";
